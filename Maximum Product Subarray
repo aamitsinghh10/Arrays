@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) 
+    {
+        if(nums.size()==0)
+            return 0;
+        
+        int minending=nums[0];
+        int maximum=nums[0];
+        
+        int result=nums[0];
+        
+        for(int i=1;i<nums.size();i++)
+        {
+     // element is negative so we swap max and min
+    // because when multiplying negative with a negative, number becomes positive so minimum negative number will become the maximum number
+           if(nums[i]<0)
+               swap(minending,maximum);
+            
+            minending=min(nums[i]*minending,nums[i]);
+            maximum=max(maximum*nums[i],nums[i]);
+            
+            result=max(result,maximum);
+        }
+        return result;
+    }
+};
