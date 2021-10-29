@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int numberOfArithmeticSlices(vector<int>& nums) 
+    {
+        if(nums.size()<3)
+            return 0;
+            
+        int result=0;
+        int count=0;
+        
+        int last=nums[1]-nums[0];//holds values of previous of current
+        
+        for(int i=1;i<nums.size()-1;i++)//
+        {
+            int curr=nums[i+1]-nums[i];
+            
+            if(curr==last)
+            {
+                count++;
+            }
+            else
+            {
+                last=curr;//storing curr value in last and making current as 0
+                count=0;
+            }
+            result+=count;//adding value of curr to result
+        }
+        return result;
+    }
+};
